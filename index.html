@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Store Manager · DOM Lab 5</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-icon">S</span><span>STOCKROOM <span class="muted">/ manager</span></span></div><span class="lab-tag">JAVASCRIPT · LAB 05</span></header>
+    <main>
+      <div class="intro"><div><div class="eyebrow">INVENTORY OVERVIEW <span class="dot"></span> LIVE</div><h1>Your store, <em>under control.</em></h1><p>Add items, update stock and track inventory value in real time.</p></div><div class="intro-icon" aria-hidden="true">▦</div></div>
+      <section class="stats" aria-label="Inventory statistics">
+        <article class="stat"><div class="stat-label">TOTAL INVENTORY VALUE <span>↗</span></div><div id="total-value" class="stat-value" aria-live="polite">₸0</div><div class="stat-foot">Updates automatically</div></article>
+        <article class="stat"><div class="stat-label">UNIQUE PRODUCTS <span>◈</span></div><div id="product-count" class="stat-value">0</div><div class="stat-foot">Products in your catalog</div></article>
+        <article class="stat"><div class="stat-label">UNITS IN STOCK <span>▥</span></div><div id="unit-count" class="stat-value">0</div><div class="stat-foot">Across all products</div></article>
+      </section>
+      <div class="columns">
+        <section class="panel add-panel" aria-labelledby="add-title"><div class="panel-heading"><div><span class="kicker">01 / PRODUCT ENTRY</span><h2 id="add-title">Add a product</h2></div><span class="mini-icon">＋</span></div><p class="panel-description">Complete the fields to add a new item to your inventory.</p>
+          <form id="product-form" novalidate>
+            <div class="field"><label for="name">Product name</label><input id="name" name="name" type="text" placeholder="e.g. Wireless headphones" autocomplete="off" aria-describedby="name-error"><small id="name-error" class="error" aria-live="polite"></small></div>
+            <div class="field"><label for="price">Unit price <span class="label-hint">KZT</span></label><div class="input-wrap"><span class="prefix">₸</span><input id="price" name="price" type="number" min="0.01" step="any" placeholder="0.00" aria-describedby="price-error"></div><small id="price-error" class="error" aria-live="polite"></small></div>
+            <div class="field"><label for="qty">Quantity <span class="label-hint">UNITS</span></label><input id="qty" name="qty" type="number" min="0" step="1" placeholder="0" aria-describedby="qty-error"><small id="qty-error" class="error" aria-live="polite"></small></div>
+            <button class="primary-button" type="submit">＋ <span>Add to inventory</span> <span class="button-arrow">→</span></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="hint"><span>ⓘ</span> All changes are made instantly in your browser. Refreshing resets the demo data.</div>
+        </section>
+        <section class="panel catalog" aria-labelledby="inventory-title"><div class="panel-heading inventory-heading"><div><span class="kicker">02 / PRODUCT CATALOG</span><h2 id="inventory-title">Inventory <span id="list-badge" class="count-badge">0</span></h2></div><span class="online"><span class="dot"></span> LIVE VIEW</span></div><p class="panel-description">Update quantities directly or remove products from the list.</p>
+        <div class="table-scroll"><table><thead><tr><th>PRODUCT</th><th>UNIT PRICE</th><th>QTY</th><th>SUBTOTAL</th><th class="align-right">ACTION</th></tr></thead><tbody id="product-list"></tbody></table></div>
+        <div id="empty-state" class="empty-state" hidden><div class="empty-icon">▤</div><strong>Nothing here yet</strong><p>Add your first product using the form.</p></div>
+        <div class="catalog-footer"><span>INVENTORY TOTAL</span><strong id="footer-total">₸0</strong></div>
+        </section>
+      </div>
+      <footer class="site-footer"><span>STOCKROOM <span class="footer-separator">/</span> DOM & EVENTS LAB</span><span>BUILT WITH VANILLA JAVASCRIPT <span class="footer-separator">✦</span> 2026</span></footer>
+    </main>
+  </div>
+</body>
+</html>
